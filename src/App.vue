@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="post" v-for="post in posts" :key="post.id">
+    <div class="post" v-for="post in allPosts" :key="post.id">
       <h3>{{ post.title }}</h3>
       <p>{{ post.body }}</p>
     </div>
@@ -9,17 +9,13 @@
 
 <script>
 export default {
-  data() {
-    return {
-      posts: [],
-    }
+  computed: {
+    allPosts() {
+      return this.$store.getters.getAllPosts;
+    },
   },
   async mounted() {
-    const resp = await fetch("http://jsonplaceholder.typicode.com/posts?_limit=5");
-    const posts = await resp.json();
-    console.log(posts);
-
-    this.posts = posts;
+    this.$store.dispatch("fetchPosts");
   }
 }
 </script>

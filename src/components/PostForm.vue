@@ -24,6 +24,8 @@ export default {
         body: this.body,
         id: Date.now(),
       });
+      
+      this.title = this.body = "";
     },
   },
 }

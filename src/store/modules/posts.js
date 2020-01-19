@@ -22,8 +22,13 @@ export default {
     getAllPosts(state) {
       return state.posts;
     },
-    getPostsCount(state) {
-      return state.posts.length;
+    getPostsCount(state, getters) {
+      return getters.getValidPosts.length;
+    },
+    getValidPosts(state) {
+      return state.posts.filter(post => {
+        return post.title && post.body;
+      })
     }
   },
 }

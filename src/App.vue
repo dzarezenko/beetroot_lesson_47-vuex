@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h2>Posts count: {{ postsCount }}</h2>
     <div class="post" v-for="post in allPosts" :key="post.id">
       <h3>{{ post.title }}</h3>
       <p>{{ post.body }}</p>
@@ -14,6 +15,7 @@ export default {
   computed: {
     ...mapGetters({
       allPosts: "getAllPosts",
+      postsCount: "getPostsCount",
     }),
   },
   methods: {
@@ -22,7 +24,7 @@ export default {
     }),
   },
   async mounted() {
-    this.fetchPosts();
+    this.fetchPosts(10);
   }
 }
 </script>

@@ -8,14 +8,23 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   computed: {
-    posts() {
-      return this.$store.getters.getAllPosts;
-    }
+    ...mapGetters({
+      posts: "getAllPosts",
+    }),
+
+    // ...
+  },
+  methods: {
+    ...mapActions({
+      fetchPosts: "fetchPosts",
+    }),
   },
   mounted() {
-    this.$store.dispatch("fetchPosts");
+    this.fetchPosts();
   },
 }
 </script>

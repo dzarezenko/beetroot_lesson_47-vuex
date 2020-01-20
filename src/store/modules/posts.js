@@ -8,8 +8,8 @@ export default {
     },
   },
   actions: {
-    async fetchPosts(ctx) {
-      const resp = await fetch("http://jsonplaceholder.typicode.com/posts?_limit=5");
+    async fetchPosts(ctx, limit = 5) {
+      const resp = await fetch(`http://jsonplaceholder.typicode.com/posts?_limit=${limit}`);
       const posts = await resp.json();
       //console.log(posts);
 
@@ -19,6 +19,10 @@ export default {
   getters: {
     getAllPosts(state) {
       return state.posts;
+    },
+
+    getPostsCount(state) {
+      return state.posts.length;
     },
   },
 }

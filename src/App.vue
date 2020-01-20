@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <div class="post" v-for="post in posts" :key="post.id">
-      <h3>{{ post.title }}</h3>
+    <h2>Post Counter: {{ postsCount }}</h2>
+    <div class="post" v-for="(post, index) in posts" :key="post.id">
+      <h3>{{ index + 1 }}. {{ post.title }}</h3>
       <p>{{ post.body }}</p>
     </div>
   </div>
@@ -14,6 +15,7 @@ export default {
   computed: {
     ...mapGetters({
       posts: "getAllPosts",
+      postsCount: "getPostsCount",
     }),
 
     // ...
@@ -24,7 +26,7 @@ export default {
     }),
   },
   mounted() {
-    this.fetchPosts();
+    this.fetchPosts(7);
   },
 }
 </script>

@@ -3,7 +3,7 @@
     <post-form />
     <hr />
     <h2>Post Counter: {{ postsCount }}</h2>
-    <div class="post" v-for="(post, index) in posts" :key="post.id">
+    <div class="post" v-for="(post, index) in validPosts" :key="post.id">
       <h3>{{ index + 1 }}. {{ post.title }}</h3>
       <p>{{ post.body }}</p>
     </div>
@@ -22,6 +22,7 @@ export default {
     ...mapGetters({
       posts: "getAllPosts",
       postsCount: "getPostsCount",
+      validPosts: "getValidPosts",
     }),
 
     // ...

@@ -12,12 +12,12 @@ export default {
     },
   },
   actions: {
-    async fetchPosts(ctx, limit = 5) {
+    async fetchPosts({ commit }, limit = 5) {
       const resp = await fetch(`http://jsonplaceholder.typicode.com/posts?_limit=${limit}`);
       const posts = await resp.json();
       //console.log(posts);
 
-      ctx.commit("updatePost", posts);
+      commit("updatePost", posts);
     }
   },
   getters: {

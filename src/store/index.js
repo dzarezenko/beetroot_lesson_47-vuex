@@ -1,31 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import posts from "./modules/posts";
+//import users from "./modules/users";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
+  /*state: {
     posts: [],
-  },
-  mutations: {
-    updatePost(state, posts) {
-      state.posts = posts;
-    },
-  },
-  actions: {
-    async fetchPosts(ctx) {
-      const resp = await fetch("http://jsonplaceholder.typicode.com/posts?_limit=5");
-      const posts = await resp.json();
-      //console.log(posts);
-
-      ctx.commit("updatePost", posts);
-    }
-  },
-  getters: {
-    getAllPosts(state) {
-      return state.posts;
-    },
-  },
+  },*/
   modules: {
+    posts//, users
   }
 })

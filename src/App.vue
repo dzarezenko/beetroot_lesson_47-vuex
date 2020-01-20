@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <post-form />
+    <hr />
     <h2>Post Counter: {{ postsCount }}</h2>
     <div class="post" v-for="(post, index) in posts" :key="post.id">
       <h3>{{ index + 1 }}. {{ post.title }}</h3>
@@ -10,8 +12,12 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import PostForm from "@/components/PostForm";
 
 export default {
+  components: {
+    postForm: PostForm,
+  },
   computed: {
     ...mapGetters({
       posts: "getAllPosts",
